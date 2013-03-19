@@ -1,0 +1,7 @@
+*
+!.gitignore.d
+!.gitignore.d/bashrc
+!.bashrc
+!.bash_profile
+!.bash_logout
+!.bashrc@nicks-macbook-air
