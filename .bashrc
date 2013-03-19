@@ -1,7 +1,6 @@
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
-
 #Setup options
 shopt -s checkwinsize cdspell extglob histappend
 HISTCONTROL=ignoreboth
@@ -9,14 +8,14 @@ HISTIGNORE="[bf]g:exit:quit"
 
 #Colors
 [ -n "$TMUX" ] && export TERM=screen-256color
-#case "$TERM" in
-#    screen)
-#        export TERM=xterm-color
-#        ;;
-#    screen-256color)
-#        export TERM=xterm-color
-#        ;;
-#esac
+case "$TERM" in
+    screen)
+        export TERM=xterm-color
+        ;;
+    screen-256color)
+        export TERM=xterm-color
+        ;;
+esac
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;31'
 export CLICOLOR=1 
 
@@ -26,7 +25,6 @@ export PAGER=less
 
 # modified commands
 alias ll='ls -lF'
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias more='less'
 alias df='df -h'
@@ -174,6 +172,7 @@ bash_prompt
 unset bash_prompt
 
 #Source bashrc_local for config specific to this host
-if [ -f ~/.bashrc_local ]; then
-      source ~/.bashrc_local
+BASHRC_LOCAL=".bashrc@$(hostname -s)"
+if [ -f ~/${BASHRC_LOCAL} ]; then
+      source ~/${BASHRC_LOCAL}
 fi
